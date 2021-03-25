@@ -62,3 +62,14 @@ binomial n k
 
 binomial_2 :: Integer -> Integer -> Integer
 binomial_2 n k = if(k==0 || k==n) then 1 else if(k>n) then undefined else (binomial (n-1) k) + (binomial (n-1) (k-1))
+
+passo::(Integer,Integer) -> (Integer,Integer)
+passo (x,y) = (y,x+y)
+
+fibo_a::Integer -> (Integer,Integer)
+fibo_a n 
+  |n == 0 = (0,1)
+  |otherwise = passo (fibo_a (n-1))
+
+fibo2::Integer->Integer
+fibo2 n = fst(fibo_a n)
